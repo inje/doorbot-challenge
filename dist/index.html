@@ -5,24 +5,238 @@
 
 		<link rel="icon" type="image/x-icon" href="./favicon.ico" />
 
-		<script type="text/javascript"> // Always use HTTPS.
+		<script type="text/javascript">
+			// Always use HTTPS.
 			// if (window.location.protocol === "http:")
 			// 	window.location.href = (window.location.href+'').replace('http://', 'https://');
 		</script>
 
-		<script src="./bundle.js" type="text/javascript"></script>
+		<link href="https://fonts.googleapis.com/css?family=Roboto:700,900" rel="stylesheet">
+		<style>
+			/* Begin style reset */
 
-		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" rel="stylesheet" />
-		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous" rel="stylesheet" />
+			html, body, div, span, applet, object, iframe,
+			h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+			a, abbr, acronym, address, big, cite, code,
+			del, dfn, em, img, ins, kbd, q, s, samp,
+			small, strike, strong, sub, sup, tt, var,
+			b, u, i, center,
+			dl, dt, dd, ol, ul, li,
+			fieldset, form, label, legend,
+			table, caption, tbody, tfoot, thead, tr, th, td,
+			article, aside, canvas, details, embed, 
+			figure, figcaption, footer, header, hgroup, 
+			menu, nav, output, ruby, section, summary,
+			time, mark, audio, video {
+			  margin: 0;
+			  padding: 0;
+			  border: 0;
+			  font-size: 100%;
+			  font: inherit;
+			  vertical-align: baseline;
+			}
+			/* HTML5 display-role reset for older browsers */
+			article, aside, details, figcaption, figure,
+			footer, header, hgroup, menu, nav, section {
+			  display: block;
+			}
+			body {
+			  line-height: 1;
+			}
+			ol, ul {
+			  list-style: none;
+			}
+			blockquote, q {
+			  quotes: none;
+			}
+			blockquote:before, blockquote:after,
+			q:before, q:after {
+			  content: '';
+			  content: none;
+			}
+			table {
+			  border-collapse: collapse;
+			  border-spacing: 0;
+			}
+
+			/* End style reset */
+
+			/* Html */
+
+			html, body {
+			  height: 100%;
+			}
+
+			html {
+			  margin: 0;
+			  padding: 0;
+			  font-family: "Helvetica Neue", Roboto, Arial, sans-serif;
+			  color: black;
+			  background: linear-gradient(135deg, #6080E7, #91D4ED);
+			}
+
+			body {
+			  box-sizing: border-box;
+			}
+
+			h1 {
+			  font-family: "Roboto", sans-serif;
+			  font-size: 2rem;
+			  font-weight: 600;
+			  color: white;
+			}
+
+			h2 {
+			  font-family: "Roboto", sans-serif;
+			  font-size: 1.5rem;
+			  font-weight: 600;
+			  color: white;
+			}
+
+			.wrapper {
+			  min-height: 500px;
+			  padding-bottom: 100px;
+			}
+
+			.header {
+			  padding: 50px 80px;
+			  position: relative;
+			  z-index: 999;
+			  display: flex;
+			  justify-content: space-between;
+			  align-items: flex-end;
+			}
+
+			.container {
+			  width: 100%;
+			  margin-right: auto;
+			  margin-left: auto;
+			  box-shadow: 2px 0 200px #3C58D0;
+			}
+
+			.container-inner {
+				padding: 40px;
+			}
+
+			#form {
+			  margin-top: 10px;
+			}
+
+			.form-col {
+				display: flex;
+				justify-content: space-between;
+				flex-direction: column;
+				height: 300px;
+				width: 300px;
+			}
+
+			.form-space {
+				padding-bottom: 30px;
+			}
+
+			.input-button {
+			  background-color: white;
+			  border: 1px solid white;
+			  border-radius: 5px;
+			  color: #4C78D0;
+			  font-size: 14px;
+			  padding: 15px;
+			  width: 100px;
+			}
+
+			.input-button-end {
+				border-radius: 0 5px 5px 0;
+			}
+
+			.input-button:hover {
+			  background-color: #F8F8FC;
+			}
+
+			.input-button:active {
+			  background-color: #F0F0FC;
+			  border: 1px solid #F0F0FC;
+			}
+
+			.input-button:focus {
+			  outline:0;
+			}
+
+			.input-text {
+			  background-color: transparent;
+			  border: 0;
+			  border-bottom: 2px solid white;
+			  color: white;
+			  font-size: 14px;
+			  padding: 15px;
+			  width: 250px;
+			}
+
+			.input-text::placeholder {
+			  color: white;
+			  font-size: 14px;
+			}
+
+			.input-text:focus {
+			  outline:0;
+			}
+
+			.hidden {
+				display: none;
+			}
+
+			.margin-bottom {
+				padding-bottom: 15px;
+			}
+		</style>
 
 	</head>
 
 	<body>
-		Loading...
+		<header class="header">
+			<h1>doorbot</h1>
+			<form id="login-form" name="login">
+				<input class="input-text" type="text" placeholder="username" />
+				<input class="input-text" type="password" placeholder="password" />
+				<input class="input-button input-button-end" type="submit" />
+			</form>
+			<form id="logout-form" class="hidden">
+				<input class="input-button" type="submit" value="logout">
+			</form>
+		</header>
+		<section class="main">
+			<div class="container">
+				<div id="main-container" class="container-inner hidden">
+					<div class="add-users margin-bottom">
+						<h2>Add users</h2>
+						<form id="form-add-user" name="login" class="form-add-user form-space">
+							<input class="input-text" type="text" placeholder="username" />
+							<input class="input-button input-button-end" type="submit" />
+						</form>
+					</div>
+					<div class="add-doors margin-bottom">
+						<h2>Add doors</h2>
+						<form id="form-add-door" name="login" class="form-add-door form-space">
+							<input class="input-text" type="text" placeholder="username" />
+							<input class="input-button input-button-end" type="submit" />
+						</form>
+					</div>
+					<div class="settings margin-bottom">
+						<h2>Change settings</h2>
+						<form id="form-change-settings" name="login" class="form-col form-space">
+							<input class="input-text" type="text" placeholder="username" />
+							<input class="input-text" type="password" placeholder="current password" />
+							<input class="input-text" type="password" placeholder="new password" />
+							<input class="input-text" type="password" placeholder="repeat new password" />
+							<input class="input-button" type="submit" />
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
 	</body>
-
+	<script src="./bundle.js" type="text/javascript"></script>
 	<script type="text/javascript">
-		Doorbot.init();
+		// Doorbot.init();
 	</script>
 
 <html>
